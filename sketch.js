@@ -27,26 +27,21 @@ function setup() {
 	groundSprite=createSprite(width/2, height-35, width,10);
 	groundSprite.shapeColor=color(255)
 
-	box1 = new box(370,650,20,100);
-	box1.shapeColor = "red";
-
-	box2 = new box(430,650,20,100);
-	box2.shapeColor = "red";
-
-	box3 = new box(400,690,200,20);
-	box3.shapeColor = "red";
-
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.4, isStatic:true});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.5, isStatic:true});
 	World.add(world, packageBody);
-	
 
 	//Create a Ground
 	ground = Bodies.rectangle(width/2, 650, width, 10 , {isStatic:true} );
  	World.add(world, ground);
 
+	 box1 = new Box(300,610,20,100);
+	
+	 box2 = new Box(430,610,20,100);
+
+	 box3 = new Box(365,650,120,20);
 
 	Engine.run(engine);
   
@@ -56,14 +51,13 @@ function setup() {
 function draw() {
   rectMode(CENTER);
   background(0);
+
   packageSprite.x= packageBody.position.x 
   packageSprite.y= packageBody.position.y
   
   box1.display();
   box2.display();
   box3.display();
-
-  keyPressed();
 
   drawSprites();
  
